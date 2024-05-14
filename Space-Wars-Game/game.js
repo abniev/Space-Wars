@@ -28,6 +28,10 @@ class Game {
     this.clockContainer = document.getElementById("clock-container");
     this.clock = document.getElementById("clock");
     this.endMessage = document.getElementById("end-message");
+    this.explosionEffect = new Audio(
+      "/mixkit-arcade-chiptune-explosion-1691.wav"
+    );
+    this.laserBeam = new Audio("/mixkit-short-laser-gun-shot-1670.wav");
   }
   start() {
     this.gameScreen.style.height = `${this.height}px`;
@@ -47,7 +51,7 @@ class Game {
   gameLoop() {
     this.frames += 1;
 
-    if (this.frames % 120 === 0) {
+    if (this.frames % 90 === 0) {
       this.obstacles.push(new Obstacle(this.gameScreen));
     }
 
@@ -82,6 +86,7 @@ class Game {
         bullet.move();
 
         if (bullet.didCollide(obstacle)) {
+          this.explosionEffect.play();
           obstacle.createExplosion();
           obstacle.element.remove();
           bullet.element.remove();
@@ -97,6 +102,7 @@ class Game {
       });
 
       if (this.player.didCollide(obstacle)) {
+        this.explosionEffect.play();
         obstacle.createExplosion();
         obstacle.element.remove();
         this.obstacles.splice(i, 1);
@@ -107,9 +113,9 @@ class Game {
         obstacle.element.remove();
         this.obstacles.splice(i, 1);
         // this.score++;
-        this.lives -=1;
+        this.lives -= 1;
       }
-    })
+    });
     this.scoreElement.innerHTML = this.score;
     this.livesElement.innerHTML = this.lives;
   }
@@ -118,6 +124,7 @@ class Game {
     this.bullets.push(
       new Bullet(this.player.left, this.player.top, 30, 10, this.gameScreen)
     );
+    this.laserBeam.play();
   }
 
   returnLivesMessage() {
@@ -146,8 +153,5 @@ class Game {
     } else {
       this.endMessage.innerText = `You lost!  You ran out of lives and finished with a score of ${this.score}.`;
     }
-  }
-  audio(){
-    const explosionEffect = new audio("/mixkit-arcarde-chiptune-explosion-1691.wav");
   }
 }
