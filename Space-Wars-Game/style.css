@@ -1,5 +1,5 @@
 body {
-  padding: 0;
+  padding: 20px;
   text-align: center;
 }
 
@@ -41,15 +41,15 @@ body {
   display: none;
 }
 
-.game-intro p {
-  font-size: 18px;
-  font-family: "helvetica", sans-serif;
+.game-intro {
+  font-family: "pf-uniform", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
 
 .logo-img {
   width: 350px;
+  padding: 20px;
 }
 
 .arrows-img {
@@ -63,7 +63,7 @@ body button {
   padding: 20px 40px;
   border: 0;
   box-shadow: 0;
-  border-radius: 5px;
+  border-radius: 50px;
   margin-bottom: 20px;
 }
 
@@ -73,5 +73,9 @@ body button {
 
 #clock-container {
   margin-top: 1%;
-  margin-left: 2%;
+  margin-left: 1%;
 }
+
+/* main {
+  background-color: #f2f2f2;
+} */
