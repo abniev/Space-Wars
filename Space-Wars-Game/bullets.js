@@ -8,10 +8,10 @@ class Bullet {
 
     this.directionX = 0;
     this.directionY = 0;
-    this.element = document.createElement("div");
-    // this.element.src = imgSrc;
+    this.element = document.createElement("img");
+    this.element.src = "/laser-beam.png";
     this.element.style.position = "absolute";
-    this.element.style.backgroundColor = "red";
+    // this.element.style.backgroundColor = "red";
     this.element.style.left = `${this.left}px`;
     this.element.style.top = `${this.top}px`;
     this.element.style.height = `${this.height}px`;
@@ -47,21 +47,19 @@ class Bullet {
   //     }, 1250);
   //   }
 
-  //   didCollide(obstacle)
-  // {
-  //   const bulletsRect = this.element.getBoundingClientRect();
-  //   const obstacleRect = obstacle.element.getBoundingClientRect();
+  didCollide(obstacle) {
+    const bulletRect = this.element.getBoundingClientRect();
+    const obstacleRect = obstacle.element.getBoundingClientRect();
 
-  //   if (
-  //     bulletsRect.left < obstacleRect.right &&
-  //     bulletsRect.right > obstacleRect.left &&
-  //     bulletsRect.top < obstacleRect.bottom &&
-  //     bulletsRect.bottom > obstacleRect.top
-  //   ) {
-  //     return true;
-  //   }
-  //     else {
-  //     return false;
-  //   }
-  // }
+    if (
+      bulletRect.left < obstacleRect.right &&
+      bulletRect.right > obstacleRect.left &&
+      bulletRect.top < obstacleRect.bottom &&
+      bulletRect.bottom > obstacleRect.top
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

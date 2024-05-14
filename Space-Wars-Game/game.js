@@ -78,6 +78,23 @@ class Game {
 
     this.obstacles.forEach((obstacle, i) => {
       obstacle.move();
+      this.bullets.forEach((bullet, j) => {
+        bullet.move();
+
+        if (bullet.didCollide(obstacle)) {
+          obstacle.createExplosion();
+          obstacle.element.remove();
+          bullet.element.remove();
+          this.bullets.splice(j, 1);
+          this.obstacles.splice(i, 1);
+          this.score++;
+        }
+
+        if (this.bullets.top < -10) {
+          bullet.element.remove();
+          this.bullets.splice(i, 1);
+        }
+      });
 
       if (this.player.didCollide(obstacle)) {
         obstacle.createExplosion();
@@ -89,34 +106,17 @@ class Game {
       if (obstacle.top > 640) {
         obstacle.element.remove();
         this.obstacles.splice(i, 1);
-        this.score++;
-
+        // this.score++;
+        this.lives -=1;
       }
-    });
-   
-    // this.bullets.move();
-
-  //   this.bullets.forEach((bullets, i) => {
-  //     bullets.move();
-      
-  //   if (this.bullets.didCollide(obstacle)) {
-  //     obstacle.createExplosion();
-  //     obstacle.element.remove();
-  //     this.obstacles.splice(i, 1);
-  //     this.score++;
-  //   }
-
-  //   if (this.bullets.top < -10) {
-  //     bullets.element.remove();
-  //     this.bullets.splice(i, 1);
-  //   }
-  // });
-}
-
+    })
+    this.scoreElement.innerHTML = this.score;
+    this.livesElement.innerHTML = this.lives;
+  }
 
   shoot() {
     this.bullets.push(
-      new Bullet(this.player.left, this.player.top, 5, 5, this.gameScreen)
+      new Bullet(this.player.left, this.player.top, 30, 10, this.gameScreen)
     );
   }
 
@@ -146,5 +146,8 @@ class Game {
     } else {
       this.endMessage.innerText = `You lost!  You ran out of lives and finished with a score of ${this.score}.`;
     }
+  }
+  audio(){
+    const explosionEffect = new audio("/mixkit-arcarde-chiptune-explosion-1691.wav");
   }
 }
