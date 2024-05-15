@@ -129,7 +129,6 @@ class Game {
       new Bullet(this.player.left, this.player.top, 40, 10, this.gameScreen)
     );
     this.laserBeam.play();
-    // this.laserBeam.loop = true;
   }
 
   returnLivesMessage() {
@@ -146,9 +145,6 @@ class Game {
     this.gameScreen.style.height = `${0}px`;
     this.gameScreen.style.width = `${0}px`;
     this.gameScreen.style.display = "none";
-    console.log("Game end screen", this.stats);
-    // this.stats.style.display = "none";
-    // this.clockContainer.style.display = "none";
     this.gameEndScreen.style.display = "inherit";
     if (this.timer <= 0) {
       this.endMessage.innerText = `You won! You finished with a score of ${
@@ -157,5 +153,6 @@ class Game {
     } else {
       this.endMessage.innerText = `You lost!  You ran out of lives and finished with a score of ${this.score}.`;
     }
+    this.gameOver.play();
   }
 }

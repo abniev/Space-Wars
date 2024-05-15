@@ -15,8 +15,6 @@ window.onload = function () {
 
     const shipEngine = new Audio("/spaceship-engine.wav");
 
-    console.log("start game");
-
     document.addEventListener("keydown", (e) => {
       if (e.key === "ArrowRight") {
         if (game.player.directionX < 4) {

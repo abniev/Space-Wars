@@ -74,14 +74,19 @@ body button {
 
 #stats-container {
   margin-right: 2%;
-  padding: 5px;
+  padding: 15px;
+  align-items: center;
+  background-color: #f2f2f250;
+  border-radius: 50px;
 }
 
 #clock-container {
-  margin-top: 0.5%;
-  /* margin-left: 0%; */
-  padding: 5px;
+  /* margin-top: 2%; */
+  margin-left: 2%;
+  padding: 15px;
   align-items: center;
+  background-color: #f2f2f250;
+  border-radius: 50px;
 }
 
 main {
