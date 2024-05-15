@@ -53,7 +53,7 @@ window.onload = function () {
   });
 
   document.addEventListener("keydown", (e) => {
-    console.log(e);
+    // console.log(e);
     if (e.key === " ") {
       game.shoot();
     }

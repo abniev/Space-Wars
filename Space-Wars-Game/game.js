@@ -17,7 +17,7 @@ class Game {
     this.bullets = [];
     this.score = 0;
     this.lives = 5;
-    this.timer = 60;
+    this.timer = 30;
     this.gameIsOver = false;
     this.gameIntervalId = null;
     this.gameLoopFrequency = 1000 / 60;
@@ -122,9 +122,10 @@ class Game {
 
   shoot() {
     this.bullets.push(
-      new Bullet(this.player.left, this.player.top, 30, 10, this.gameScreen)
+      new Bullet(this.player.left, this.player.top, 40, 10, this.gameScreen)
     );
     this.laserBeam.play();
+    // this.laserBeam.loop = true;
   }
 
   returnLivesMessage() {
@@ -132,7 +133,6 @@ class Game {
   }
 
   gameOverScreen() {
-    console.log("Game over");
     this.player.element.remove();
 
     this.obstacles.forEach((obstacle) => {

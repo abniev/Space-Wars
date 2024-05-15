@@ -39,12 +39,15 @@ body {
 
 #game-end {
   display: none;
+  color: #f2f2f2;
+  padding: 2%
 }
 
 .game-intro {
-  font-family: "pf-uniform", sans-serif;
+  font-family: "industry-inc-base", sans-serif;
   font-weight: 400;
   font-style: normal;
+  color: #f2f2f2;
 }
 
 .logo-img {
@@ -57,25 +60,51 @@ body {
 }
 
 body button {
-  font-size: 30px;
-  background-color: #c7452f;
-  color: #f1f1f1;
+  font-family: "industry-inc-base", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 40px;
+  background-color: #f2f2f2;
+  color: #c7452f;
   padding: 20px 40px;
   border: 0;
   box-shadow: 0;
   border-radius: 50px;
-  margin-bottom: 20px;
 }
 
 #stats-container {
   margin-right: 2%;
+  padding: 5px;
 }
 
 #clock-container {
-  margin-top: 1%;
-  margin-left: 1%;
+  margin-top: 0.5%;
+  /* margin-left: 0%; */
+  padding: 5px;
+  align-items: center;
 }
 
-/* main {
-  background-color: #f2f2f2;
-} */
+main {
+  font-family: "industry-inc-base", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  background-image: url(/gradientBackgroundSpaceWars.jpg);
+  background-size: cover;
+}
+
+h1 {
+  font-size: 50px;
+}
+
+p {
+  font-size: 30px;
+  color: #f2f2f2;
+}
+
+h2 {
+  font-size: 40px;
+  color: #f2f2f2
+}
+#end-message {
+  padding: 10px;
+}
