@@ -16,8 +16,8 @@ class Game {
     this.obstacles = [];
     this.bullets = [];
     this.score = 0;
-    this.lives = 5;
-    this.timer = 30;
+    this.lives = 8;
+    this.timer = 60;
     this.gameIsOver = false;
     this.gameIntervalId = null;
     this.gameLoopFrequency = 1000 / 60;
@@ -32,6 +32,9 @@ class Game {
       "/mixkit-arcade-chiptune-explosion-1691.wav"
     );
     this.laserBeam = new Audio("/mixkit-short-laser-gun-shot-1670.wav");
+    this.gameOver = new Audio("/arcade-fast-game-over.wav");
+    this.gameStart = new Audio("/gameStart.wav");
+    this.shipEngine = new Audio("/spaceship-engine.wav");
   }
   start() {
     this.gameScreen.style.height = `${this.height}px`;
@@ -69,6 +72,7 @@ class Game {
 
     if (this.timer <= 0) {
       this.gameIsOver = true;
+      this.gameOver.play();
     }
 
     if (this.gameIsOver === true) {
@@ -95,7 +99,7 @@ class Game {
           this.score++;
         }
 
-        if (this.bullets.top < -10) {
+        if (this.bullets.top < -5) {
           bullet.element.remove();
           this.bullets.splice(i, 1);
         }

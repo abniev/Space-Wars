@@ -38,5 +38,5 @@ class Obstacle {
     setTimeout(() => {
       newElement.remove();
     }, 1250);
-  };
-};
+  }
+}
